@@ -73,18 +73,4 @@ class TableDataService
         return $this->orderStateRepository->getAllWithSpecificFields();
     }
 
-    public function getAllTablesData(): array
-    {
-        return [
-            'cars' => $this->getAllCars(),
-            'bsu' => $this->getAllBsu(),
-            'comp' => $this->getAllComp(),
-            'customers' => $this->getAllCustomers(),
-            'dispatchers' => $this->getAllDispatchers(),
-            'drivers' => $this->getAllDrivers(),
-            'mixtures' => $this->getAllMixtures(),
-            'orders' => $this->getAllOrders(),
-            'orderStates' => $this->getAllOrderStates(),
-        ];
-    }
 }

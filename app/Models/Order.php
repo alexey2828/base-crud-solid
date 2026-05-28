@@ -44,19 +44,16 @@ class Order extends Model
         'idPlant' => 'integer'
     ];
     
-    // Связь с заказчиком
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class, 'idCustomer', 'id');
     }
-    
-    // Связь с состояниями заказа
+
     public function orderStates(): HasMany
     {
         return $this->hasMany(OrderState::class, 'idOrder', 'id');
     }
     
-    // Связь с БСУ
     public function bsu(): BelongsTo
     {
         return $this->belongsTo(Bsu::class, 'idPlant', 'id');

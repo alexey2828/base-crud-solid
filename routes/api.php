@@ -74,12 +74,3 @@ Route::apiResource('user', UserController::class);
 Route::get('analize-total-vproduct', [AnalizeController::class, 'analyze']);
 Route::get('analize-total-v-by-components', [AnalizeTotalVByComponentsController::class, 'analyze']);
 
-Route::middleware('register.resource')->group(function () {
-    Route::get('/{resource}', [ResourceController::class, 'index']);
-    Route::get('/{resource}/{id}', [ResourceController::class, 'show'])->whereNumber('id');
-    Route::post('/{resource}', [ResourceController::class, 'store']);
-    Route::put('/{resource}/{id}', [ResourceController::class, 'update'])->whereNumber('id');
-    Route::patch('/{resource}/{id}', [ResourceController::class, 'update'])->whereNumber('id');
-    Route::delete('/{resource}/{id}', [ResourceController::class, 'destroy'])->whereNumber('id');
-});
-
