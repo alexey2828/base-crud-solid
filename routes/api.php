@@ -11,6 +11,11 @@ use App\Http\Controllers\Api\DispatcherController;
 use App\Http\Controllers\Api\MixtureController;
 use App\Http\Controllers\Api\ResourceController;
 use App\Http\Controllers\Api\ClassrecipeController;
+use App\Http\Controllers\Api\ClasscomponentController;
+use App\Http\Controllers\Api\CompmainController;
+use App\Http\Controllers\Api\ConsumptioncomponentweightController;
+use App\Http\Controllers\Api\CurrentcomponentweightController;
+use App\Http\Controllers\Api\MainstateController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource('comp', CompController::class);
@@ -21,6 +26,11 @@ Route::apiResource('order', OrderController::class);
 Route::apiResource('mixture', MixtureController::class);
 Route::apiResource('order-state', OrderStateController::class);
 Route::apiResource('class-recipe', ClassrecipeController::class);
+Route::apiResource('class-component', ClasscomponentController::class);
+Route::apiResource('comp-main', CompmainController::class);
+Route::apiResource('consumption-component-weight', ConsumptioncomponentweightController::class);
+Route::apiResource('current-component-weight', CurrentcomponentweightController::class);
+Route::apiResource('main-state', MainstateController::class);
 
 Route::middleware('register.resource')->group(function () {
     Route::get('/{resource}', [ResourceController::class, 'index']);

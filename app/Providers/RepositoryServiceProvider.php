@@ -14,6 +14,11 @@ use App\Contracts\Repositories\OrderRepositoryInterface;
 use App\Contracts\Repositories\OrderStateRepositoryInterface;
 use App\Contracts\Repositories\DispatcherRepositoryInterface;
 use App\Contracts\Repositories\ClassrecipeRepositoryInterface;
+use App\Contracts\Repositories\ClasscomponentRepositoryInterface;
+use App\Contracts\Repositories\CompmainRepositoryInterface;
+use App\Contracts\Repositories\ConsumptioncomponentweightRepositoryInterface;
+use App\Contracts\Repositories\CurrentcomponentweightRepositoryInterface;
+use App\Contracts\Repositories\MainstateRepositoryInterface;
 use App\Models\Bsu;
 use App\Models\Car;
 use App\Models\Comp;
@@ -24,6 +29,11 @@ use App\Models\Order;
 use App\Models\OrderState;
 use App\Models\Dispatcher;
 use App\Models\Classrecipe;
+use App\Models\Classcomponent;
+use App\Models\Compmain;
+use App\Models\Consumptioncomponentweight;
+use App\Models\Currentcomponentweight;
+use App\Models\Mainstate;
 use App\Repositories\BsuRepository;
 use App\Repositories\CarRepository;
 use App\Repositories\CompRepository;
@@ -34,6 +44,11 @@ use App\Repositories\OrderRepository;
 use App\Repositories\OrderStateRepository;
 use App\Repositories\DispatcherRepository;
 use App\Repositories\ClassrecipeRepository;
+use App\Repositories\ClasscomponentRepository;
+use App\Repositories\CompmainRepository;
+use App\Repositories\ConsumptioncomponentweightRepository;
+use App\Repositories\CurrentcomponentweightRepository;
+use App\Repositories\MainstateRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -110,6 +125,46 @@ class RepositoryServiceProvider extends ServiceProvider
 
         $this->app->bind(ClassrecipeRepositoryInterface::class, function ($app) {
             return new ClassrecipeRepository($app->make(Classrecipe::class));
+        });
+
+        $this->app->bind(ClasscomponentRepository::class, function ($app) {
+            return new ClasscomponentRepository($app->make(Classcomponent::class));
+        });
+
+        $this->app->bind(ClasscomponentRepositoryInterface::class, function ($app) {
+            return new ClasscomponentRepository($app->make(Classcomponent::class));
+        });
+
+        $this->app->bind(CompmainRepository::class, function ($app) {
+            return new CompmainRepository($app->make(Compmain::class));
+        });
+
+        $this->app->bind(CompmainRepositoryInterface::class, function ($app) {
+            return new CompmainRepository($app->make(Compmain::class));
+        });
+
+        $this->app->bind(ConsumptioncomponentweightRepository::class, function ($app) {
+            return new ConsumptioncomponentweightRepository($app->make(Consumptioncomponentweight::class));
+        });
+
+        $this->app->bind(ConsumptioncomponentweightRepositoryInterface::class, function ($app) {
+            return new ConsumptioncomponentweightRepository($app->make(Consumptioncomponentweight::class));
+        });
+
+        $this->app->bind(CurrentcomponentweightRepository::class, function ($app) {
+            return new CurrentcomponentweightRepository($app->make(Currentcomponentweight::class));
+        });
+
+        $this->app->bind(CurrentcomponentweightRepositoryInterface::class, function ($app) {
+            return new CurrentcomponentweightRepository($app->make(Currentcomponentweight::class));
+        });
+
+        $this->app->bind(MainstateRepository::class, function ($app) {
+            return new MainstateRepository($app->make(Mainstate::class));
+        });
+
+        $this->app->bind(MainstateRepositoryInterface::class, function ($app) {
+            return new MainstateRepository($app->make(Mainstate::class));
         });
     }
 }

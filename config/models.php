@@ -54,6 +54,48 @@ return [
             'name' => 'required|string|max:255'
         ],
     ],
+    'compmain' => [
+        'model' => App\Models\Compmain::class,
+        'repository' => App\Contracts\Repositories\CompmainRepositoryInterface::class,
+        'validation' => [
+            'name' => 'required|string|max:255',
+            'code' => 'required|string|max:255|unique:compmain'
+        ],
+    ],
+    'consumptioncomponentweight' => [
+        'model' => App\Models\Consumptioncomponentweight::class,
+        'repository' => App\Contracts\Repositories\ConsumptioncomponentweightRepositoryInterface::class,
+        'validation' => [
+            'date' => 'required|date',
+            'code' => 'required|string|max:255',
+            'weight' => 'required|numeric',
+            'silCemCode' => 'required|string|max:255'
+        ],
+    ],
+    'currentcomponentweight' => [
+        'model' => App\Models\Currentcomponentweight::class,
+        'repository' => App\Contracts\Repositories\CurrentcomponentweightRepositoryInterface::class,
+        'validation' => [
+            'date' => 'required|date',
+            'weight' => 'required|numeric',
+            'code' => 'required|string|max:255',
+            'bsuCode' => 'required|string|max:255',
+            'silCemCode' => 'required|string|max:255',
+            'deltaWeight' => 'required|numeric',
+            'isIncreased' => 'required|boolean'
+        ],
+    ],
+    'mainstate' => [
+        'model' => App\Models\Mainstate::class,
+        'repository' => App\Contracts\Repositories\MainstateRepositoryInterface::class,
+        'validation' => [
+            'name' => 'required|string|max:255',
+            'code' => 'required|string|max:255|unique:mainstate',
+            'options' => 'required|string',
+            'entityName' => 'required|string|max:255',
+            'isPause' => 'required|boolean'
+        ],
+    ],
     'mixture' => [
         'model' => App\Models\Mixture::class,
         'repository' => App\Contracts\Repositories\MixtureRepositoryInterface::class,
@@ -66,6 +108,15 @@ return [
         'repository' => App\Contracts\Repositories\OrderStateRepositoryInterface::class,
         'validation' => [
             'name' => 'required|string|max:255'
+        ],
+    ],
+    'classcomponent' => [
+        'model' => App\Models\Classcomponent::class,
+        'repository' => App\Contracts\Repositories\ClasscomponentRepositoryInterface::class,
+        'validation' => [
+            'code' => 'required|string|max:50|unique:classcomponent',
+            'name' => 'required|string|max:255',
+            'shortName' => 'required|string|max:255'
         ],
     ],
 ];
