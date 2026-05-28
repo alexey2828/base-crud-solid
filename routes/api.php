@@ -34,6 +34,7 @@ use App\Http\Controllers\Api\TtnController;
 use App\Http\Controllers\Api\TtnstateController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\WeightmanualController;
+use App\Http\Controllers\Api\AnalizeController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource('comp', CompController::class);
@@ -69,6 +70,7 @@ Route::apiResource('ttn', TtnController::class);
 Route::apiResource('ttn-state', TtnstateController::class);
 Route::apiResource('weight-manual', WeightmanualController::class);
 Route::apiResource('user', UserController::class);
+Route::get('analize-total-vproduct', [AnalizeController::class, 'analyze']);
 
 Route::middleware('register.resource')->group(function () {
     Route::get('/{resource}', [ResourceController::class, 'index']);
