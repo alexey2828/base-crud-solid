@@ -25,6 +25,14 @@ use App\Contracts\Repositories\RecmarkaRepositoryInterface;
 use App\Contracts\Repositories\RecmobilityRepositoryInterface;
 use App\Contracts\Repositories\RecstrengthRepositoryInterface;
 use App\Contracts\Repositories\RecwatRepositoryInterface;
+use App\Contracts\Repositories\ReportcurrentloopRepositoryInterface;
+use App\Contracts\Repositories\ReportweightmanualRepositoryInterface;
+use App\Contracts\Repositories\RoleRepositoryInterface;
+use App\Contracts\Repositories\SilcemRepositoryInterface;
+use App\Contracts\Repositories\TtnRepositoryInterface;
+use App\Contracts\Repositories\TtnstateRepositoryInterface;
+use App\Contracts\Repositories\UserRepositoryInterface;
+use App\Contracts\Repositories\WeightmanualRepositoryInterface;
 use App\Contracts\Repositories\CompmainRepositoryInterface;
 use App\Contracts\Repositories\ConsumptioncomponentweightRepositoryInterface;
 use App\Contracts\Repositories\CurrentcomponentweightRepositoryInterface;
@@ -50,6 +58,14 @@ use App\Models\Recmarka;
 use App\Models\Recmobility;
 use App\Models\Recstrength;
 use App\Models\Recwat;
+use App\Models\Reportcurrentloop;
+use App\Models\Reportweightmanual;
+use App\Models\Role;
+use App\Models\Silcem;
+use App\Models\Ttn;
+use App\Models\Ttnstate;
+use App\Models\User;
+use App\Models\Weightmanual;
 use App\Models\Compmain;
 use App\Models\Consumptioncomponentweight;
 use App\Models\Currentcomponentweight;
@@ -75,6 +91,14 @@ use App\Repositories\RecmarkaRepository;
 use App\Repositories\RecmobilityRepository;
 use App\Repositories\RecstrengthRepository;
 use App\Repositories\RecwatRepository;
+use App\Repositories\ReportcurrentloopRepository;
+use App\Repositories\ReportweightmanualRepository;
+use App\Repositories\RoleRepository;
+use App\Repositories\SilcemRepository;
+use App\Repositories\TtnRepository;
+use App\Repositories\TtnstateRepository;
+use App\Repositories\UserRepository;
+use App\Repositories\WeightmanualRepository;
 use App\Repositories\CompmainRepository;
 use App\Repositories\ConsumptioncomponentweightRepository;
 use App\Repositories\CurrentcomponentweightRepository;
@@ -243,6 +267,70 @@ class RepositoryServiceProvider extends ServiceProvider
 
         $this->app->bind(RecwatRepositoryInterface::class, function ($app) {
             return new RecwatRepository($app->make(Recwat::class));
+        });
+
+        $this->app->bind(ReportcurrentloopRepository::class, function ($app) {
+            return new ReportcurrentloopRepository($app->make(Reportcurrentloop::class));
+        });
+
+        $this->app->bind(ReportcurrentloopRepositoryInterface::class, function ($app) {
+            return new ReportcurrentloopRepository($app->make(Reportcurrentloop::class));
+        });
+
+        $this->app->bind(ReportweightmanualRepository::class, function ($app) {
+            return new ReportweightmanualRepository($app->make(Reportweightmanual::class));
+        });
+
+        $this->app->bind(ReportweightmanualRepositoryInterface::class, function ($app) {
+            return new ReportweightmanualRepository($app->make(Reportweightmanual::class));
+        });
+
+        $this->app->bind(TtnRepository::class, function ($app) {
+            return new TtnRepository($app->make(Ttn::class));
+        });
+
+        $this->app->bind(TtnRepositoryInterface::class, function ($app) {
+            return new TtnRepository($app->make(Ttn::class));
+        });
+
+        $this->app->bind(TtnstateRepository::class, function ($app) {
+            return new TtnstateRepository($app->make(Ttnstate::class));
+        });
+
+        $this->app->bind(TtnstateRepositoryInterface::class, function ($app) {
+            return new TtnstateRepository($app->make(Ttnstate::class));
+        });
+
+        $this->app->bind(WeightmanualRepository::class, function ($app) {
+            return new WeightmanualRepository($app->make(Weightmanual::class));
+        });
+
+        $this->app->bind(WeightmanualRepositoryInterface::class, function ($app) {
+            return new WeightmanualRepository($app->make(Weightmanual::class));
+        });
+
+        $this->app->bind(UserRepository::class, function ($app) {
+            return new UserRepository($app->make(User::class));
+        });
+
+        $this->app->bind(UserRepositoryInterface::class, function ($app) {
+            return new UserRepository($app->make(User::class));
+        });
+
+        $this->app->bind(RoleRepository::class, function ($app) {
+            return new RoleRepository($app->make(Role::class));
+        });
+
+        $this->app->bind(RoleRepositoryInterface::class, function ($app) {
+            return new RoleRepository($app->make(Role::class));
+        });
+
+        $this->app->bind(SilcemRepository::class, function ($app) {
+            return new SilcemRepository($app->make(Silcem::class));
+        });
+
+        $this->app->bind(SilcemRepositoryInterface::class, function ($app) {
+            return new SilcemRepository($app->make(Silcem::class));
         });
 
         $this->app->bind(CompmainRepository::class, function ($app) {

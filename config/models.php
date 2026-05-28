@@ -115,6 +115,62 @@ return [
             'indProduct' => 'required|string|max:255'
         ],
     ],
+    'ttn' => [
+        'model' => App\Models\Ttn::class,
+        'repository' => App\Contracts\Repositories\TtnRepositoryInterface::class,
+        'validation' => [
+            'date' => 'required|string|max:255',
+            'idPlant' => 'required|string|max:255',
+            'idOrder' => 'nullable|string|max:255',
+            'dispatcher' => 'required|string|max:255',
+            'vProduct' => 'required|string|max:255',
+            'driver' => 'required|string|max:255',
+            'car' => 'required|string|max:255',
+            'finishAdress' => 'nullable|string|max:255',
+            'finishDate' => 'nullable|string|max:255',
+            'state' => 'required|string|max:255',
+            'isPause' => 'required|boolean',
+            'idProduct' => 'required|string|max:255',
+            'idBsu' => 'required|string|max:255'
+        ],
+    ],
+    'ttnstate' => [
+        'model' => App\Models\Ttnstate::class,
+        'repository' => App\Contracts\Repositories\TtnstateRepositoryInterface::class,
+        'validation' => [
+            'date' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'idTtn' => 'required|string|max:255',
+            'json' => 'nullable|string',
+            'isPause' => 'required|boolean'
+        ],
+    ],
+    'weightmanual' => [
+        'model' => App\Models\Weightmanual::class,
+        'repository' => App\Contracts\Repositories\WeightmanualRepositoryInterface::class,
+        'validation' => [
+            'indProduct' => 'required|string|max:255',
+            'numLoop' => 'required|string|max:255',
+            'code' => 'required|string|max:255',
+            'weight' => 'required|string|max:255',
+            'dispenser' => 'required|string|max:255',
+            'idProduct' => 'required|string|max:255'
+        ],
+    ],
+    'user' => [
+        'model' => App\Models\User::class,
+        'repository' => App\Contracts\Repositories\UserRepositoryInterface::class,
+        'validation' => [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'password' => 'required|string|min:8',
+            'role' => 'nullable|string|max:255',
+            'login' => 'nullable|string|max:255|unique:users,login',
+            'phone' => 'nullable|string|max:255',
+            'verification_code' => 'nullable|string|max:255',
+            'verification_expires' => 'nullable|date'
+        ],
+    ],
     'reccomment' => [
         'model' => App\Models\Reccomment::class,
         'repository' => App\Contracts\Repositories\ReccommentRepositoryInterface::class,
@@ -190,12 +246,53 @@ return [
             'code' => 'required|string|max:255|unique:recwat'
         ],
     ],
-    'recmobility' => [
-        'model' => App\Models\Recmobility::class,
-        'repository' => App\Contracts\Repositories\RecmobilityRepositoryInterface::class,
+    'reportcurrentloop' => [
+        'model' => App\Models\Reportcurrentloop::class,
+        'repository' => App\Contracts\Repositories\ReportcurrentloopRepositoryInterface::class,
+        'validation' => [
+            'vLoop' => 'required|string|max:255',
+            'loopNumber' => 'required|string|max:255',
+            'code' => 'required|string|max:255',
+            'dispencer' => 'required|string|max:255',
+            'doisingError' => 'required|string|max:255',
+            'doisingErrorPersent' => 'required|string|max:255',
+            'doisingKorr' => 'required|string|max:255',
+            'humidityKorr' => 'required|string|max:255',
+            'weightFactLoop' => 'required|string|max:255',
+            'weightFactM3' => 'required|string|max:255',
+            'weightRecipeLoop' => 'required|string|max:255',
+            'weightRecipeM3' => 'required|string|max:255',
+            'idProduct' => 'required|string|max:255',
+            'indProduct' => 'required|string|max:255',
+            'powerLoop' => 'required|string|max:255'
+        ],
+    ],
+    'reportweightmanual' => [
+        'model' => App\Models\Reportweightmanual::class,
+        'repository' => App\Contracts\Repositories\ReportweightmanualRepositoryInterface::class,
+        'validation' => [
+            'loopNumber' => 'required|string|max:255',
+            'code' => 'required|string|max:255',
+            'dispenser' => 'required|string|max:255',
+            'weight' => 'required|string|max:255'
+        ],
+    ],
+    'role' => [
+        'model' => App\Models\Role::class,
+        'repository' => App\Contracts\Repositories\RoleRepositoryInterface::class,
         'validation' => [
             'name' => 'required|string|max:255',
-            'code' => 'required|string|max:255|unique:recmobility'
+            'code' => 'required|string|max:255|unique:role'
+        ],
+    ],
+    'silcem' => [
+        'model' => App\Models\Silcem::class,
+        'repository' => App\Contracts\Repositories\SilcemRepositoryInterface::class,
+        'validation' => [
+            'codeBSU' => 'required|string|max:255',
+            'code' => 'required|string|max:255',
+            'batcher' => 'required|string|max:255',
+            'capacity' => 'required|string|max:255'
         ],
     ],
     'mainstate' => [

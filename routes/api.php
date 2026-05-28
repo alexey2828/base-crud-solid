@@ -26,9 +26,19 @@ use App\Http\Controllers\Api\RecmarkaController;
 use App\Http\Controllers\Api\RecmobilityController;
 use App\Http\Controllers\Api\RecstrengthController;
 use App\Http\Controllers\Api\RecwatController;
+use App\Http\Controllers\Api\ReportcurrentloopController;
+use App\Http\Controllers\Api\ReportweightmanualController;
+use App\Http\Controllers\Api\RoleController;
+use App\Http\Controllers\Api\SilcemController;
+use App\Http\Controllers\Api\TtnController;
+use App\Http\Controllers\Api\TtnstateController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\WeightmanualController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource('comp', CompController::class);
+Route::apiResource('bsu', BsuController::class);
+Route::apiResource('car', CarController::class);
 Route::apiResource('dispatcher', DispatcherController::class);
 Route::apiResource('customer', CustomerController::class);
 Route::apiResource('driver', DriverController::class);
@@ -51,12 +61,21 @@ Route::apiResource('rec-marka', RecmarkaController::class);
 Route::apiResource('rec-mobility', RecmobilityController::class);
 Route::apiResource('rec-strength', RecstrengthController::class);
 Route::apiResource('rec-wat', RecwatController::class);
+Route::apiResource('report-current-loop', ReportcurrentloopController::class);
+Route::apiResource('report-weight-manual', ReportweightmanualController::class);
+Route::apiResource('role', RoleController::class);
+Route::apiResource('silcem', SilcemController::class);
+Route::apiResource('ttn', TtnController::class);
+Route::apiResource('ttn-state', TtnstateController::class);
+Route::apiResource('weight-manual', WeightmanualController::class);
+Route::apiResource('user', UserController::class);
 
 Route::middleware('register.resource')->group(function () {
     Route::get('/{resource}', [ResourceController::class, 'index']);
     Route::get('/{resource}/{id}', [ResourceController::class, 'show'])->whereNumber('id');
     Route::post('/{resource}', [ResourceController::class, 'store']);
     Route::put('/{resource}/{id}', [ResourceController::class, 'update'])->whereNumber('id');
+    Route::patch('/{resource}/{id}', [ResourceController::class, 'update'])->whereNumber('id');
     Route::delete('/{resource}/{id}', [ResourceController::class, 'destroy'])->whereNumber('id');
 });
 
