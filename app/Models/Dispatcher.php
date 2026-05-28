@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Dispatcher extends Model
+{
+    use HasFactory;
+
+    protected $table = 'dispatcher';
+
+    public $timestamps = false;
+
+    protected $fillable = ['name', 'code'];
+}

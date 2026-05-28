@@ -7,11 +7,7 @@ use Illuminate\Http\JsonResponse;
 
 class OrderStateController extends BaseApiController
 {
-    public array $validationRules = [
-        'name' => 'required|string|max:50',
-        'code' => 'required|string|max:50',
-        'typeCode' => 'required|numeric|min:0',
-    ];
+    public array $validationRules = [];
 
     public function __construct(OrderStateRepositoryInterface $repository)
     {

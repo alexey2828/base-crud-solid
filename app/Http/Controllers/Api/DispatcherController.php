@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Contracts\Repositories\MixtureRepositoryInterface;
+use App\Contracts\Repositories\DispatcherRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 
-class MixtureController extends BaseApiController
+class DispatcherController extends BaseApiController
 {
     public array $validationRules = [];
 
-    public function __construct(MixtureRepositoryInterface $repository)
+    public function __construct(DispatcherRepositoryInterface $repository)
     {
         parent::__construct($repository);
     }
 
     public function getWorking(): JsonResponse
     {
-        $mixture = $this->repository->getWorkingMixture();
+        $dispatcher = $this->repository->getWorkingDispatcher();
 
         return response()->json([
             'success' => true,
-            'data' => $mixture,
+            'data' => $dispatcher,
         ]);
     }
 }

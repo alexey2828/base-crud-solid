@@ -12,6 +12,7 @@ use App\Contracts\Repositories\DriverRepositoryInterface;
 use App\Contracts\Repositories\MixtureRepositoryInterface;
 use App\Contracts\Repositories\OrderRepositoryInterface;
 use App\Contracts\Repositories\OrderStateRepositoryInterface;
+use App\Contracts\Repositories\DispatcherRepositoryInterface;
 use App\Models\Bsu;
 use App\Models\Car;
 use App\Models\Comp;
@@ -20,6 +21,7 @@ use App\Models\Driver;
 use App\Models\Mixture;
 use App\Models\Order;
 use App\Models\OrderState;
+use App\Models\Dispatcher;
 use App\Repositories\BsuRepository;
 use App\Repositories\CarRepository;
 use App\Repositories\CompRepository;
@@ -28,6 +30,7 @@ use App\Repositories\DriverRepository;
 use App\Repositories\MixtureRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\OrderStateRepository;
+use App\Repositories\DispatcherRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -74,6 +77,14 @@ class RepositoryServiceProvider extends ServiceProvider
             return new DriverRepository($app->make(Driver::class));
         });
 
+        $this->app->bind(DispatcherRepository::class, function ($app) {
+            return new DispatcherRepository($app->make(Dispatcher::class));
+        });
+
+        $this->app->bind(DispatcherRepositoryInterface::class, function ($app) {
+            return new DispatcherRepository($app->make(Dispatcher::class));
+        });
+
         $this->app->bind(MixtureRepository::class, function ($app) {
             return new MixtureRepository($app->make(Mixture::class));
         });
@@ -90,12 +101,12 @@ class RepositoryServiceProvider extends ServiceProvider
             return new OrderRepository($app->make(Order::class));
         });
 
-        $this->app->bind(OrderStateRepository::class, function ($app) {
-            return new OrderStateRepository($app->make(OrderState::class));
+        $this->app->bind(DispatcherRepository::class, function ($app) {
+            return new DispatcherRepository($app->make(Dispatcher::class));
         });
 
-        $this->app->bind(OrderStateRepositoryInterface::class, function ($app) {
-            return new OrderStateRepository($app->make(OrderState::class));
+        $this->app->bind(DispatcherRepositoryInterface::class, function ($app) {
+            return new DispatcherRepository($app->make(Dispatcher::class));
         });
     }
 }

@@ -21,6 +21,7 @@ class TableDataService
         private BsuRepositoryInterface $bsuRepository,
         private CompRepositoryInterface $compRepository,
         private CustomerRepositoryInterface $customerRepository,
+        private DispatcherRepositoryInterface $dispatcherRepository,
         private DriverRepositoryInterface $driverRepository,
         private MixtureRepositoryInterface $mixtureRepository,
         private OrderRepositoryInterface $orderRepository,
@@ -45,6 +46,11 @@ class TableDataService
     public function getAllCustomers(): Collection
     {
         return $this->customerRepository->getAllWithSpecificFields();
+    }
+
+    public function getAllDispatchers(): Collection
+    {
+        return $this->dispatcherRepository->getAllWithSpecificFields();
     }
 
     public function getAllDrivers(): Collection
@@ -74,6 +80,7 @@ class TableDataService
             'bsu' => $this->getAllBsu(),
             'comp' => $this->getAllComp(),
             'customers' => $this->getAllCustomers(),
+            'dispatchers' => $this->getAllDispatchers(),
             'drivers' => $this->getAllDrivers(),
             'mixtures' => $this->getAllMixtures(),
             'orders' => $this->getAllOrders(),
