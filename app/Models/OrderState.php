@@ -27,7 +27,6 @@ class OrderState extends Model
         'idOrder' => 'integer'
     ];
     
-    // Связь с заказом
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class, 'idOrder', 'id');

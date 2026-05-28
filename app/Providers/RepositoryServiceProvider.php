@@ -13,6 +13,7 @@ use App\Contracts\Repositories\MixtureRepositoryInterface;
 use App\Contracts\Repositories\OrderRepositoryInterface;
 use App\Contracts\Repositories\OrderStateRepositoryInterface;
 use App\Contracts\Repositories\DispatcherRepositoryInterface;
+use App\Contracts\Repositories\ClassrecipeRepositoryInterface;
 use App\Models\Bsu;
 use App\Models\Car;
 use App\Models\Comp;
@@ -22,6 +23,7 @@ use App\Models\Mixture;
 use App\Models\Order;
 use App\Models\OrderState;
 use App\Models\Dispatcher;
+use App\Models\Classrecipe;
 use App\Repositories\BsuRepository;
 use App\Repositories\CarRepository;
 use App\Repositories\CompRepository;
@@ -31,6 +33,7 @@ use App\Repositories\MixtureRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\OrderStateRepository;
 use App\Repositories\DispatcherRepository;
+use App\Repositories\ClassrecipeRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -101,12 +104,12 @@ class RepositoryServiceProvider extends ServiceProvider
             return new OrderRepository($app->make(Order::class));
         });
 
-        $this->app->bind(DispatcherRepository::class, function ($app) {
-            return new DispatcherRepository($app->make(Dispatcher::class));
+        $this->app->bind(ClassrecipeRepository::class, function ($app) {
+            return new ClassrecipeRepository($app->make(Classrecipe::class));
         });
 
-        $this->app->bind(DispatcherRepositoryInterface::class, function ($app) {
-            return new DispatcherRepository($app->make(Dispatcher::class));
+        $this->app->bind(ClassrecipeRepositoryInterface::class, function ($app) {
+            return new ClassrecipeRepository($app->make(Classrecipe::class));
         });
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\OrderStateController;
 use App\Http\Controllers\Api\DispatcherController;
 use App\Http\Controllers\Api\MixtureController;
 use App\Http\Controllers\Api\ResourceController;
+use App\Http\Controllers\Api\ClassrecipeController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource('comp', CompController::class);
@@ -19,6 +20,7 @@ Route::apiResource('driver', DriverController::class);
 Route::apiResource('order', OrderController::class);
 Route::apiResource('mixture', MixtureController::class);
 Route::apiResource('order-state', OrderStateController::class);
+Route::apiResource('class-recipe', ClassrecipeController::class);
 
 Route::middleware('register.resource')->group(function () {
     Route::get('/{resource}', [ResourceController::class, 'index']);
