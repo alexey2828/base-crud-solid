@@ -15,6 +15,16 @@ use App\Contracts\Repositories\OrderStateRepositoryInterface;
 use App\Contracts\Repositories\DispatcherRepositoryInterface;
 use App\Contracts\Repositories\ClassrecipeRepositoryInterface;
 use App\Contracts\Repositories\ClasscomponentRepositoryInterface;
+use App\Contracts\Repositories\PlantRepositoryInterface;
+use App\Contracts\Repositories\ProductRepositoryInterface;
+use App\Contracts\Repositories\ReccommentRepositoryInterface;
+use App\Contracts\Repositories\RecfrostRepositoryInterface;
+use App\Contracts\Repositories\RecipeRepositoryInterface;
+use App\Contracts\Repositories\RecipestateRepositoryInterface;
+use App\Contracts\Repositories\RecmarkaRepositoryInterface;
+use App\Contracts\Repositories\RecmobilityRepositoryInterface;
+use App\Contracts\Repositories\RecstrengthRepositoryInterface;
+use App\Contracts\Repositories\RecwatRepositoryInterface;
 use App\Contracts\Repositories\CompmainRepositoryInterface;
 use App\Contracts\Repositories\ConsumptioncomponentweightRepositoryInterface;
 use App\Contracts\Repositories\CurrentcomponentweightRepositoryInterface;
@@ -30,6 +40,16 @@ use App\Models\OrderState;
 use App\Models\Dispatcher;
 use App\Models\Classrecipe;
 use App\Models\Classcomponent;
+use App\Models\Plant;
+use App\Models\Product;
+use App\Models\Reccomment;
+use App\Models\Recfrost;
+use App\Models\Recipe;
+use App\Models\Recipestate;
+use App\Models\Recmarka;
+use App\Models\Recmobility;
+use App\Models\Recstrength;
+use App\Models\Recwat;
 use App\Models\Compmain;
 use App\Models\Consumptioncomponentweight;
 use App\Models\Currentcomponentweight;
@@ -45,6 +65,16 @@ use App\Repositories\OrderStateRepository;
 use App\Repositories\DispatcherRepository;
 use App\Repositories\ClassrecipeRepository;
 use App\Repositories\ClasscomponentRepository;
+use App\Repositories\PlantRepository;
+use App\Repositories\ProductRepository;
+use App\Repositories\ReccommentRepository;
+use App\Repositories\RecfrostRepository;
+use App\Repositories\RecipeRepository;
+use App\Repositories\RecipestateRepository;
+use App\Repositories\RecmarkaRepository;
+use App\Repositories\RecmobilityRepository;
+use App\Repositories\RecstrengthRepository;
+use App\Repositories\RecwatRepository;
 use App\Repositories\CompmainRepository;
 use App\Repositories\ConsumptioncomponentweightRepository;
 use App\Repositories\CurrentcomponentweightRepository;
@@ -133,6 +163,86 @@ class RepositoryServiceProvider extends ServiceProvider
 
         $this->app->bind(ClasscomponentRepositoryInterface::class, function ($app) {
             return new ClasscomponentRepository($app->make(Classcomponent::class));
+        });
+
+        $this->app->bind(PlantRepository::class, function ($app) {
+            return new PlantRepository($app->make(Plant::class));
+        });
+
+        $this->app->bind(PlantRepositoryInterface::class, function ($app) {
+            return new PlantRepository($app->make(Plant::class));
+        });
+
+        $this->app->bind(ProductRepository::class, function ($app) {
+            return new ProductRepository($app->make(Product::class));
+        });
+
+        $this->app->bind(ProductRepositoryInterface::class, function ($app) {
+            return new ProductRepository($app->make(Product::class));
+        });
+
+        $this->app->bind(ReccommentRepository::class, function ($app) {
+            return new ReccommentRepository($app->make(Reccomment::class));
+        });
+
+        $this->app->bind(ReccommentRepositoryInterface::class, function ($app) {
+            return new ReccommentRepository($app->make(Reccomment::class));
+        });
+
+        $this->app->bind(RecfrostRepository::class, function ($app) {
+            return new RecfrostRepository($app->make(Recfrost::class));
+        });
+
+        $this->app->bind(RecfrostRepositoryInterface::class, function ($app) {
+            return new RecfrostRepository($app->make(Recfrost::class));
+        });
+
+        $this->app->bind(RecipeRepository::class, function ($app) {
+            return new RecipeRepository($app->make(Recipe::class));
+        });
+
+        $this->app->bind(RecipeRepositoryInterface::class, function ($app) {
+            return new RecipeRepository($app->make(Recipe::class));
+        });
+
+        $this->app->bind(RecipestateRepository::class, function ($app) {
+            return new RecipestateRepository($app->make(Recipestate::class));
+        });
+
+        $this->app->bind(RecipestateRepositoryInterface::class, function ($app) {
+            return new RecipestateRepository($app->make(Recipestate::class));
+        });
+
+        $this->app->bind(RecmarkaRepository::class, function ($app) {
+            return new RecmarkaRepository($app->make(Recmarka::class));
+        });
+
+        $this->app->bind(RecmarkaRepositoryInterface::class, function ($app) {
+            return new RecmarkaRepository($app->make(Recmarka::class));
+        });
+
+        $this->app->bind(RecmobilityRepository::class, function ($app) {
+            return new RecmobilityRepository($app->make(Recmobility::class));
+        });
+
+        $this->app->bind(RecmobilityRepositoryInterface::class, function ($app) {
+            return new RecmobilityRepository($app->make(Recmobility::class));
+        });
+
+        $this->app->bind(RecstrengthRepository::class, function ($app) {
+            return new RecstrengthRepository($app->make(Recstrength::class));
+        });
+
+        $this->app->bind(RecstrengthRepositoryInterface::class, function ($app) {
+            return new RecstrengthRepository($app->make(Recstrength::class));
+        });
+
+        $this->app->bind(RecwatRepository::class, function ($app) {
+            return new RecwatRepository($app->make(Recwat::class));
+        });
+
+        $this->app->bind(RecwatRepositoryInterface::class, function ($app) {
+            return new RecwatRepository($app->make(Recwat::class));
         });
 
         $this->app->bind(CompmainRepository::class, function ($app) {

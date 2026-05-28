@@ -85,6 +85,119 @@ return [
             'isIncreased' => 'required|boolean'
         ],
     ],
+    'plants' => [
+        'model' => App\Models\Plant::class,
+        'repository' => App\Contracts\Repositories\PlantRepositoryInterface::class,
+        'validation' => [
+            'codePlant' => 'required|string|max:255|unique:plants',
+            'name' => 'required|string|max:255',
+            'comment' => 'required|string'
+        ],
+    ],
+    'product' => [
+        'model' => App\Models\Product::class,
+        'repository' => App\Contracts\Repositories\ProductRepositoryInterface::class,
+        'validation' => [
+            'dateStart' => 'required|string|max:255',
+            'timeEnd' => 'required|string|max:255',
+            'vProduct' => 'required|string|max:255',
+            'loopNumber' => 'required|string|max:255',
+            'vLoop' => 'required|string|max:255',
+            'driver' => 'required|string|max:255',
+            'car' => 'required|string|max:255',
+            'classRecipe' => 'required|string|max:255',
+            'nameRecipe' => 'required|string|max:255',
+            'recipe' => 'required|string|max:255',
+            'idTtn' => 'required|string|max:255',
+            'timeStart' => 'required|string|max:255',
+            'num_loop' => 'required|string|max:255',
+            'idPlant' => 'required|string|max:255',
+            'indProduct' => 'required|string|max:255'
+        ],
+    ],
+    'reccomment' => [
+        'model' => App\Models\Reccomment::class,
+        'repository' => App\Contracts\Repositories\ReccommentRepositoryInterface::class,
+        'validation' => [
+            'name' => 'required|string|max:255'
+        ],
+    ],
+    'recfrost' => [
+        'model' => App\Models\Recfrost::class,
+        'repository' => App\Contracts\Repositories\RecfrostRepositoryInterface::class,
+        'validation' => [
+            'code' => 'required|string|max:255|unique:recfrost',
+            'name' => 'required|string|max:255'
+        ],
+    ],
+    'recipe' => [
+        'model' => App\Models\Recipe::class,
+        'repository' => App\Contracts\Repositories\RecipeRepositoryInterface::class,
+        'validation' => [
+            'code' => 'required|string|max:255|unique:recipe',
+            'name' => 'required|string|max:255',
+            'mixt' => 'required|string|max:255',
+            'strength' => 'required|string|max:255',
+            'mobil' => 'required|string|max:255',
+            'frost' => 'required|string|max:255',
+            'water' => 'required|string|max:255',
+            'marka' => 'required|string|max:255',
+            'condition' => 'required|string|max:255',
+            'date' => 'required|string|max:255',
+            'classRecipe' => 'required|string|max:255',
+            'recipeParam' => 'required|string|max:255',
+            'comment' => 'required|string'
+        ],
+    ],
+    'recipestate' => [
+        'model' => App\Models\Recipestate::class,
+        'repository' => App\Contracts\Repositories\RecipestateRepositoryInterface::class,
+        'validation' => [
+            'state' => 'required|string|max:255',
+            'date' => 'required|string|max:255',
+            'codeBsu' => 'required|string|max:255'
+        ],
+    ],
+    'recmarka' => [
+        'model' => App\Models\Recmarka::class,
+        'repository' => App\Contracts\Repositories\RecmarkaRepositoryInterface::class,
+        'validation' => [
+            'name' => 'required|string|max:255',
+            'code' => 'required|string|max:255|unique:recmarka'
+        ],
+    ],
+    'recmobility' => [
+        'model' => App\Models\Recmobility::class,
+        'repository' => App\Contracts\Repositories\RecmobilityRepositoryInterface::class,
+        'validation' => [
+            'name' => 'required|string|max:255',
+            'code' => 'required|string|max:255|unique:recmobility'
+        ],
+    ],
+    'recstrength' => [
+        'model' => App\Models\Recstrength::class,
+        'repository' => App\Contracts\Repositories\RecstrengthRepositoryInterface::class,
+        'validation' => [
+            'name' => 'required|string|max:255',
+            'code' => 'required|string|max:255|unique:recstrength'
+        ],
+    ],
+    'recwat' => [
+        'model' => App\Models\Recwat::class,
+        'repository' => App\Contracts\Repositories\RecwatRepositoryInterface::class,
+        'validation' => [
+            'name' => 'required|string|max:255',
+            'code' => 'required|string|max:255|unique:recwat'
+        ],
+    ],
+    'recmobility' => [
+        'model' => App\Models\Recmobility::class,
+        'repository' => App\Contracts\Repositories\RecmobilityRepositoryInterface::class,
+        'validation' => [
+            'name' => 'required|string|max:255',
+            'code' => 'required|string|max:255|unique:recmobility'
+        ],
+    ],
     'mainstate' => [
         'model' => App\Models\Mainstate::class,
         'repository' => App\Contracts\Repositories\MainstateRepositoryInterface::class,

@@ -16,6 +16,16 @@ use App\Http\Controllers\Api\CompmainController;
 use App\Http\Controllers\Api\ConsumptioncomponentweightController;
 use App\Http\Controllers\Api\CurrentcomponentweightController;
 use App\Http\Controllers\Api\MainstateController;
+use App\Http\Controllers\Api\PlantController;
+use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\ReccommentController;
+use App\Http\Controllers\Api\RecfrostController;
+use App\Http\Controllers\Api\RecipeController;
+use App\Http\Controllers\Api\RecipestateController;
+use App\Http\Controllers\Api\RecmarkaController;
+use App\Http\Controllers\Api\RecmobilityController;
+use App\Http\Controllers\Api\RecstrengthController;
+use App\Http\Controllers\Api\RecwatController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource('comp', CompController::class);
@@ -31,6 +41,16 @@ Route::apiResource('comp-main', CompmainController::class);
 Route::apiResource('consumption-component-weight', ConsumptioncomponentweightController::class);
 Route::apiResource('current-component-weight', CurrentcomponentweightController::class);
 Route::apiResource('main-state', MainstateController::class);
+Route::apiResource('plants', PlantController::class);
+Route::apiResource('product', ProductController::class);
+Route::apiResource('rec-comment', ReccommentController::class);
+Route::apiResource('rec-frost', RecfrostController::class);
+Route::apiResource('recipe', RecipeController::class);
+Route::apiResource('recipe-state', RecipestateController::class);
+Route::apiResource('rec-marka', RecmarkaController::class);
+Route::apiResource('rec-mobility', RecmobilityController::class);
+Route::apiResource('rec-strength', RecstrengthController::class);
+Route::apiResource('rec-wat', RecwatController::class);
 
 Route::middleware('register.resource')->group(function () {
     Route::get('/{resource}', [ResourceController::class, 'index']);
