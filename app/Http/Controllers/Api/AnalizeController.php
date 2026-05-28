@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Contracts\Services\AnalizeServiceInterface;
+use App\Contracts\Services\AnalizeTotalVServiceInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AnalizeController extends Controller
 {
-    protected AnalizeServiceInterface $service;
+    protected AnalizeTotalVServiceInterface $service;
 
-    public function __construct(AnalizeServiceInterface $analizeService)
+    public function __construct(AnalizeTotalVServiceInterface $AnalizeTotalVService)
     {
-        $this->service = $analizeService;
+        $this->service = $AnalizeTotalVService;
     }
 
     public function analyze(Request $request)

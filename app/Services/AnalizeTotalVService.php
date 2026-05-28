@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\Contracts\Services\AnalizeServiceInterface;
+use App\Contracts\Services\AnalizeTotalVServiceInterface;
 use Illuminate\Support\Facades\DB;
 use DateTime;
 use DateInterval;
 
-class AnalizeService implements AnalizeServiceInterface
+class AnalizeTotalVService implements AnalizeTotalVServiceInterface
 {
     protected function createDateRange(string $start_date, string $end_date, string $step): array
     {
@@ -91,7 +91,6 @@ class AnalizeService implements AnalizeServiceInterface
         $dispencer = $params['dispencer'] ?? null;
         $idTtn = $params['idTtn'] ?? null;
 
-        // Resolve BSU codes from dispencer
         $bsuCodes = [];
         if ($dispencer) {
             $bsuCodes = DB::table('silcem')->where('code', $dispencer)->pluck('codeBSU')->map(fn($v) => (int)$v)->toArray();
@@ -103,7 +102,6 @@ class AnalizeService implements AnalizeServiceInterface
 
         $bsuCodes = array_unique($bsuCodes);
 
-        // Resolve ttn ids from order
         $ttnIds = [];
         if ($orderId) {
             $ttnIds = DB::table('ttn')->where('idOrder', $orderId)->pluck('id')->map(fn($v) => (int)$v)->toArray();
@@ -125,7 +123,6 @@ class AnalizeService implements AnalizeServiceInterface
 
         $groupByExpression = $this->getGroupByExpression($step);
 
-        // Build query
         $query = DB::table('product as p')
             ->selectRaw("{$groupByExpression} as group_date, SUM(p.vProduct) as total_v_product");
 
@@ -178,7 +175,6 @@ class AnalizeService implements AnalizeServiceInterface
             $groupedData[$groupKey] = round($vProduct, 2);
         }
 
-        // Build date range and arrays
         $dateRange = [];
         $totalVProductArray = [];
 

@@ -37,7 +37,7 @@ use App\Contracts\Repositories\CompmainRepositoryInterface;
 use App\Contracts\Repositories\ConsumptioncomponentweightRepositoryInterface;
 use App\Contracts\Repositories\CurrentcomponentweightRepositoryInterface;
 use App\Contracts\Repositories\MainstateRepositoryInterface;
-use App\Contracts\Services\AnalizeServiceInterface;
+use App\Contracts\Services\AnalizeTotalVServiceInterface;
 use App\Models\Bsu;
 use App\Models\Car;
 use App\Models\Comp;
@@ -104,7 +104,7 @@ use App\Repositories\CompmainRepository;
 use App\Repositories\ConsumptioncomponentweightRepository;
 use App\Repositories\CurrentcomponentweightRepository;
 use App\Repositories\MainstateRepository;
-use App\Services\AnalizeService;
+use App\Services\AnalizeTotalVService;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -319,8 +319,8 @@ class RepositoryServiceProvider extends ServiceProvider
             return new UserRepository($app->make(User::class));
         });
 
-        $this->app->bind(AnalizeServiceInterface::class, function ($app) {
-            return new AnalizeService();
+        $this->app->bind(AnalizeTotalVServiceInterface::class, function ($app) {
+            return new AnalizeTotalVService();
         });
 
         $this->app->bind(RoleRepository::class, function ($app) {

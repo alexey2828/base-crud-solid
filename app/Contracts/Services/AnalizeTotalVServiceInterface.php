@@ -2,7 +2,7 @@
 
 namespace App\Contracts\Services;
 
-interface AnalizeServiceInterface
+interface AnalizeTotalVServiceInterface
 {
     /**
      * Analyze data and return arrays for charting
