@@ -6,15 +6,18 @@ namespace App\Providers;
 
 use App\Contracts\Repositories\BsuRepositoryInterface;
 use App\Contracts\Repositories\CarRepositoryInterface;
+use App\Contracts\Repositories\ClasscomponentRepositoryInterface;
+use App\Contracts\Repositories\ClassrecipeRepositoryInterface;
+use App\Contracts\Repositories\CompmainRepositoryInterface;
 use App\Contracts\Repositories\CompRepositoryInterface;
+use App\Contracts\Repositories\ConsumptioncomponentweightRepositoryInterface;
+use App\Contracts\Repositories\CurrentcomponentweightRepositoryInterface;
 use App\Contracts\Repositories\CustomerRepositoryInterface;
+use App\Contracts\Repositories\DispatcherRepositoryInterface;
 use App\Contracts\Repositories\DriverRepositoryInterface;
+use App\Contracts\Repositories\MainstateRepositoryInterface;
 use App\Contracts\Repositories\MixtureRepositoryInterface;
 use App\Contracts\Repositories\OrderRepositoryInterface;
-use App\Contracts\Repositories\OrderStateRepositoryInterface;
-use App\Contracts\Repositories\DispatcherRepositoryInterface;
-use App\Contracts\Repositories\ClassrecipeRepositoryInterface;
-use App\Contracts\Repositories\ClasscomponentRepositoryInterface;
 use App\Contracts\Repositories\PlantRepositoryInterface;
 use App\Contracts\Repositories\ProductRepositoryInterface;
 use App\Contracts\Repositories\ReccommentRepositoryInterface;
@@ -33,23 +36,23 @@ use App\Contracts\Repositories\TtnRepositoryInterface;
 use App\Contracts\Repositories\TtnstateRepositoryInterface;
 use App\Contracts\Repositories\UserRepositoryInterface;
 use App\Contracts\Repositories\WeightmanualRepositoryInterface;
-use App\Contracts\Repositories\CompmainRepositoryInterface;
-use App\Contracts\Repositories\ConsumptioncomponentweightRepositoryInterface;
-use App\Contracts\Repositories\CurrentcomponentweightRepositoryInterface;
-use App\Contracts\Repositories\MainstateRepositoryInterface;
-use App\Contracts\Services\AnalizeTotalVServiceInterface;
 use App\Contracts\Services\AnalizeTotalVByComponentsServiceInterface;
+use App\Contracts\Services\AnalizeTotalVServiceInterface;
+use App\Contracts\Services\BsuSearchServiceInterface;
 use App\Models\Bsu;
 use App\Models\Car;
+use App\Models\Classcomponent;
+use App\Models\Classrecipe;
 use App\Models\Comp;
+use App\Models\Compmain;
+use App\Models\Consumptioncomponentweight;
+use App\Models\Currentcomponentweight;
 use App\Models\Customer;
+use App\Models\Dispatcher;
 use App\Models\Driver;
+use App\Models\Mainstate;
 use App\Models\Mixture;
 use App\Models\Order;
-use App\Models\OrderState;
-use App\Models\Dispatcher;
-use App\Models\Classrecipe;
-use App\Models\Classcomponent;
 use App\Models\Plant;
 use App\Models\Product;
 use App\Models\Reccomment;
@@ -68,21 +71,20 @@ use App\Models\Ttn;
 use App\Models\Ttnstate;
 use App\Models\User;
 use App\Models\Weightmanual;
-use App\Models\Compmain;
-use App\Models\Consumptioncomponentweight;
-use App\Models\Currentcomponentweight;
-use App\Models\Mainstate;
 use App\Repositories\BsuRepository;
 use App\Repositories\CarRepository;
+use App\Repositories\ClasscomponentRepository;
+use App\Repositories\ClassrecipeRepository;
+use App\Repositories\CompmainRepository;
 use App\Repositories\CompRepository;
+use App\Repositories\ConsumptioncomponentweightRepository;
+use App\Repositories\CurrentcomponentweightRepository;
 use App\Repositories\CustomerRepository;
+use App\Repositories\DispatcherRepository;
 use App\Repositories\DriverRepository;
+use App\Repositories\MainstateRepository;
 use App\Repositories\MixtureRepository;
 use App\Repositories\OrderRepository;
-use App\Repositories\OrderStateRepository;
-use App\Repositories\DispatcherRepository;
-use App\Repositories\ClassrecipeRepository;
-use App\Repositories\ClasscomponentRepository;
 use App\Repositories\PlantRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\ReccommentRepository;
@@ -101,12 +103,9 @@ use App\Repositories\TtnRepository;
 use App\Repositories\TtnstateRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\WeightmanualRepository;
-use App\Repositories\CompmainRepository;
-use App\Repositories\ConsumptioncomponentweightRepository;
-use App\Repositories\CurrentcomponentweightRepository;
-use App\Repositories\MainstateRepository;
-use App\Services\AnalizeTotalVService;
 use App\Services\AnalizeTotalVByComponentsService;
+use App\Services\AnalizeTotalVService;
+use App\Services\BsuSearchService;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -322,12 +321,11 @@ class RepositoryServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(AnalizeTotalVServiceInterface::class, function ($app) {
-            return new AnalizeTotalVService();
+            return new AnalizeTotalVService;
         });
 
-        
         $this->app->bind(AnalizeTotalVByComponentsServiceInterface::class, function ($app) {
-            return new AnalizeTotalVByComponentsService();
+            return new AnalizeTotalVByComponentsService;
         });
 
         $this->app->bind(RoleRepository::class, function ($app) {
@@ -376,6 +374,10 @@ class RepositoryServiceProvider extends ServiceProvider
 
         $this->app->bind(MainstateRepositoryInterface::class, function ($app) {
             return new MainstateRepository($app->make(Mainstate::class));
+        });
+
+        $this->app->bind(BsuSearchServiceInterface::class, function ($app) {
+            return new BsuSearchService($app->make(BsuRepositoryInterface::class));
         });
     }
 }

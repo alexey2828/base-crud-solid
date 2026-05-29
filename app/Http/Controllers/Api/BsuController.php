@@ -20,6 +20,24 @@ class BsuController extends BaseApiController
         parent::__construct($repository);
     }
 
+    public function index(): JsonResponse
+    {
+        $criteria = array_filter(
+            request()->only(['id', 'codePlant', 'code', 'name', 'vMixer', 'isWork']),
+            static fn ($value) => $value !== null && $value !== ''
+        );
+
+        $bsu = empty($criteria)
+            ? $this->repository->all()
+            : $this->repository->search($criteria);
+
+        return response()->json([
+            'success' => true,
+            'data' => $bsu,
+            'total' => $bsu->count(),
+        ]);
+    }
+
     public function getWorking(): JsonResponse
     {
         $bsu = $this->repository->getWorkingBsu();

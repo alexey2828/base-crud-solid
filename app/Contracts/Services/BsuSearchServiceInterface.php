@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Contracts\Repositories;
+namespace App\Contracts\Services;
 
 use Illuminate\Database\Eloquent\Collection;
 
-interface BsuRepositoryInterface extends RepositoryInterface
+interface BsuSearchServiceInterface
 {
-    public function getAllWithSpecificFields(): Collection;
-
-    public function getWorkingBsu(): Collection;
-
     /**
      * Search BSU by multiple criteria
      *
