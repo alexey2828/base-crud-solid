@@ -16,4 +16,19 @@ class RecipeRepository extends BaseRepository implements RecipeRepositoryInterfa
     {
         return $this->model->select('id', 'code', 'name', 'mixt', 'strength', 'mobil', 'frost', 'water', 'marka', 'condition', 'date', 'classRecipe', 'recipeParam', 'comment')->get();
     }
+
+    public function search(array $criteria): Collection
+    {
+        $query = $this->model->query();
+
+        if (isset($criteria['id'])) {
+            $query->where('id', $criteria['id']);
+        }
+
+        if (isset($criteria['code'])) {
+            $query->where('code', $criteria['code']);
+        }
+
+        return $query->get();
+    }
 }

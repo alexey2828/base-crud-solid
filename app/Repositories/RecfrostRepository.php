@@ -16,4 +16,19 @@ class RecfrostRepository extends BaseRepository implements RecfrostRepositoryInt
     {
         return $this->model->select('id', 'code', 'name')->get();
     }
+
+    public function search(array $criteria): Collection
+    {
+        $query = $this->model->query();
+
+        if (isset($criteria['id'])) {
+            $query->where('id', $criteria['id']);
+        }
+
+        if (isset($criteria['code'])) {
+            $query->where('code', $criteria['code']);
+        }
+
+        return $query->get();
+    }
 }

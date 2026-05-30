@@ -16,4 +16,19 @@ class ReportcurrentloopRepository extends BaseRepository implements Reportcurren
     {
         return $this->model->select('id', 'vLoop', 'loopNumber', 'code', 'dispencer', 'doisingError', 'doisingErrorPersent', 'doisingKorr', 'humidityKorr', 'weightFactLoop', 'weightFactM3', 'weightRecipeLoop', 'weightRecipeM3', 'idProduct', 'indProduct', 'powerLoop')->get();
     }
+
+    public function search(array $criteria): Collection
+    {
+        $query = $this->model->query();
+
+        if (isset($criteria['id'])) {
+            $query->where('id', $criteria['id']);
+        }
+
+        if (isset($criteria['code'])) {
+            $query->where('code', $criteria['code']);
+        }
+
+        return $query->get();
+    }
 }

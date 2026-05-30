@@ -16,4 +16,19 @@ class CurrentcomponentweightRepository extends BaseRepository implements Current
     {
         return $this->model->select('id', 'date', 'weight', 'code', 'bsuCode', 'silCemCode', 'deltaWeight', 'isIncreased')->get();
     }
+
+    public function search(array $criteria): Collection
+    {
+        $query = $this->model->query();
+
+        if (isset($criteria['id'])) {
+            $query->where('id', $criteria['id']);
+        }
+
+        if (isset($criteria['code'])) {
+            $query->where('code', $criteria['code']);
+        }
+
+        return $query->get();
+    }
 }

@@ -16,4 +16,19 @@ class ClasscomponentRepository extends BaseRepository implements ClasscomponentR
     {
         return $this->model->select('id', 'name', 'code', 'shortName')->get();
     }
+
+    public function search(array $criteria): Collection
+    {
+        $query = $this->model->query();
+
+        if (isset($criteria['id'])) {
+            $query->where('id', $criteria['id']);
+        }
+
+        if (isset($criteria['code'])) {
+            $query->where('code', $criteria['code']);
+        }
+
+        return $query->get();
+    }
 }

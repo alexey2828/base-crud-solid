@@ -11,4 +11,19 @@ class WeightmanualRepository extends BaseRepository implements WeightmanualRepos
     {
         parent::__construct($model);
     }
+
+    public function search(array $criteria)
+    {
+        $query = $this->model->query();
+
+        if (isset($criteria['id'])) {
+            $query->where('id', $criteria['id']);
+        }
+
+        if (isset($criteria['code'])) {
+            $query->where('code', $criteria['code']);
+        }
+
+        return $query->get();
+    }
 }
