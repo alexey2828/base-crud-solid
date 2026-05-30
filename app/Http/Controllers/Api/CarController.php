@@ -14,15 +14,6 @@ class CarController extends BaseApiController
         $this->validationRules = config('models.car.validation');
     }
 
-    public function getByRFID(string $rfid): JsonResponse
-    {
-        $car = $this->repository->getByRFID($rfid);
-
-        return $car
-            ? response()->json(['success' => true, 'data' => $car])
-            : response()->json(['success' => false], 404);
-    }
-
     public function getFastCars(): JsonResponse
     {
         $cars = $this->repository->getCarsWithSpeedGreaterThan(200);

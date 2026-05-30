@@ -20,7 +20,6 @@ class CarRepository extends BaseRepository implements CarRepositoryInterface
         return $this->model->select('id', 'name', 'codeRFID', 'maxV')->get();
     }
 
-    // Специфичные методы для Car
     public function getByRFID(string $rfid): ?Car
     {
         return $this->model->where('codeRFID', $rfid)->first();

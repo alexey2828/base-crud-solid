@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 class PlantRepository extends BaseRepository implements PlantRepositoryInterface
 {
+    protected array $filterable = ['id', 'codePlant'];
+
     public function __construct(Plant $model)
     {
         parent::__construct($model);

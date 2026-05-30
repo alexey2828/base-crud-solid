@@ -17,7 +17,7 @@ class SilcemController extends BaseApiController
     public function index(): JsonResponse
     {
         $criteria = array_filter(
-            request()->only(['id', 'codeBSU']),
+            request()->only(['id', 'codeBSU', 'code']),
             static fn ($value) => $value !== null && $value !== ''
         );
 

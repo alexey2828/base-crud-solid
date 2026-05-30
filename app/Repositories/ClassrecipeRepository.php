@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ClassrecipeRepository extends BaseRepository implements ClassrecipeRepositoryInterface
 {
+    protected array $filterable = ['id', 'code'];
+    
     public function __construct(Classrecipe $model)
     {
         parent::__construct($model);
