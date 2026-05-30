@@ -21,7 +21,14 @@ abstract class BaseApiController
 
     public function index(): JsonResponse
     {
-        $data = $this->repository->all();
+        $filters = array_filter(
+            request()->query(),
+            static fn ($value) => $value !== null && $value !== ''
+        );
+
+        $data = ! empty($filters) && method_exists($this->repository, 'search')
+            ? $this->repository->search($filters)
+            : $this->repository->all();
 
         return response()->json([
             'success' => true,

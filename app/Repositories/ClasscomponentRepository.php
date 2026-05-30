@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ClasscomponentRepository extends BaseRepository implements ClasscomponentRepositoryInterface
 {
+    protected array $filterable = ['id', 'code'];
+
     public function __construct(Classcomponent $model)
     {
         parent::__construct($model);
@@ -15,20 +17,5 @@ class ClasscomponentRepository extends BaseRepository implements ClasscomponentR
     public function getAllWithSpecificFields(): Collection
     {
         return $this->model->select('id', 'name', 'code', 'shortName')->get();
-    }
-
-    public function search(array $criteria): Collection
-    {
-        $query = $this->model->query();
-
-        if (isset($criteria['id'])) {
-            $query->where('id', $criteria['id']);
-        }
-
-        if (isset($criteria['code'])) {
-            $query->where('code', $criteria['code']);
-        }
-
-        return $query->get();
     }
 }

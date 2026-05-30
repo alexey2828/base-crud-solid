@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 class CurrentcomponentweightRepository extends BaseRepository implements CurrentcomponentweightRepositoryInterface
 {
+    protected array $filterable = ['id', 'code'];
+
     public function __construct(Currentcomponentweight $model)
     {
         parent::__construct($model);
@@ -15,20 +17,5 @@ class CurrentcomponentweightRepository extends BaseRepository implements Current
     public function getAllWithSpecificFields(): Collection
     {
         return $this->model->select('id', 'date', 'weight', 'code', 'bsuCode', 'silCemCode', 'deltaWeight', 'isIncreased')->get();
-    }
-
-    public function search(array $criteria): Collection
-    {
-        $query = $this->model->query();
-
-        if (isset($criteria['id'])) {
-            $query->where('id', $criteria['id']);
-        }
-
-        if (isset($criteria['code'])) {
-            $query->where('code', $criteria['code']);
-        }
-
-        return $query->get();
     }
 }
