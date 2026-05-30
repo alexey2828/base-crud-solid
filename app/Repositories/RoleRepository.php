@@ -16,4 +16,23 @@ class RoleRepository extends BaseRepository implements RoleRepositoryInterface
     {
         return $this->model->select('id', 'name', 'code')->get();
     }
+
+    public function search(array $criteria): Collection
+    {
+        $query = $this->model->query();
+
+        if (isset($criteria['id'])) {
+            $query->where('id', $criteria['id']);
+        }
+
+        if (isset($criteria['code'])) {
+            $query->where('code', $criteria['code']);
+        }
+        
+        if (isset($criteria['name'])) {
+            $query->where('name', $criteria['name']);
+        }
+
+        return $query->get();
+    }
 }
